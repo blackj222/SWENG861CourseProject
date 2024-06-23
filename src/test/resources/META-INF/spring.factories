@@ -1,0 +1,2 @@
+org.springframework.test.context.ContextCustomizerFactory = edu.psgv.sweng861.\
+    config.SqlTestContainersSpringContextCustomizerFactory
