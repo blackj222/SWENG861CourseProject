@@ -1,0 +1,26 @@
+{
+  "sweng861CourseProjectApp": {
+    "employeeInformation": {
+      "home": {
+        "title": "Employee Informations",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Employee Information",
+        "createOrEditLabel": "Create or edit a Employee Information",
+        "notFound": "No Employee Informations found"
+      },
+      "created": "A new Employee Information is created with identifier {{ param }}",
+      "updated": "A Employee Information is updated with identifier {{ param }}",
+      "deleted": "A Employee Information is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Employee Information {{ id }}?"
+      },
+      "detail": {
+        "title": "Employee Information"
+      },
+      "id": "ID",
+      "name": "Name",
+      "handle": "Handle",
+      "user": "User"
+    }
+  }
+}

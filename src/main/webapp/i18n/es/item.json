@@ -1,0 +1,42 @@
+{
+  "sweng861CourseProjectApp": {
+    "item": {
+      "home": {
+        "title": "Items",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Item",
+        "createOrEditLabel": "Crear o editar Item",
+        "notFound": "Ningún Items encontrado"
+      },
+      "created": "Un nuevo Item ha sido creado con el identificador {{ param }}",
+      "updated": "Un Item ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Item ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Item {{ id }}?"
+      },
+      "detail": {
+        "title": "Item"
+      },
+      "id": "ID",
+      "asin": "Asin",
+      "productTitle": "Product Title",
+      "productPrice": "Product Price",
+      "productOriginalPrice": "Product Original Price",
+      "currency": "Currency",
+      "productStarRating": "Product Star Rating",
+      "productNumRatings": "Product Num Ratings",
+      "productUrl": "Product Url",
+      "productPhoto": "Product Photo",
+      "productNumOffers": "Product Num Offers",
+      "productMinimumOfferPrice": "Product Minimum Offer Price",
+      "isBestSeller": "Is Best Seller",
+      "isAmazonChoice": "Is Amazon Choice",
+      "isPrime": "Is Prime",
+      "climatePledgeFriendly": "Climate Pledge Friendly",
+      "salesVolume": "Sales Volume",
+      "delivery": "Delivery",
+      "couponText": "Coupon Text",
+      "order": "Order"
+    }
+  }
+}

@@ -1,0 +1,235 @@
+<div>
+  <h2 id="page-heading" data-cy="ItemHeading">
+    <span jhiTranslate="sweng861CourseProjectApp.item.home.title">Items</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="sweng861CourseProjectApp.item.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-item"
+        [routerLink]="['/item/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="sweng861CourseProjectApp.item.home.createLabel">Create a new Item</span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  @if (items?.length === 0) {
+    <div class="alert alert-warning" id="no-result">
+      <span jhiTranslate="sweng861CourseProjectApp.item.home.notFound">No Items found</span>
+    </div>
+  }
+
+  @if (items && items.length > 0) {
+    <div class="table-responsive table-entities" id="entities">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr jhiSort [sortState]="sortState" (sortChange)="navigateToWithComponentValues($event)">
+            <th scope="col" jhiSortBy="id">
+              <div class="d-flex">
+                <span jhiTranslate="global.field.id">ID</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="asin">
+              <div class="d-flex">
+                <span jhiTranslate="sweng861CourseProjectApp.item.asin">Asin</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="productTitle">
+              <div class="d-flex">
+                <span jhiTranslate="sweng861CourseProjectApp.item.productTitle">Product Title</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="productPrice">
+              <div class="d-flex">
+                <span jhiTranslate="sweng861CourseProjectApp.item.productPrice">Product Price</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="productOriginalPrice">
+              <div class="d-flex">
+                <span jhiTranslate="sweng861CourseProjectApp.item.productOriginalPrice">Product Original Price</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="currency">
+              <div class="d-flex">
+                <span jhiTranslate="sweng861CourseProjectApp.item.currency">Currency</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="productStarRating">
+              <div class="d-flex">
+                <span jhiTranslate="sweng861CourseProjectApp.item.productStarRating">Product Star Rating</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="productNumRatings">
+              <div class="d-flex">
+                <span jhiTranslate="sweng861CourseProjectApp.item.productNumRatings">Product Num Ratings</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="productUrl">
+              <div class="d-flex">
+                <span jhiTranslate="sweng861CourseProjectApp.item.productUrl">Product Url</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="productPhoto">
+              <div class="d-flex">
+                <span jhiTranslate="sweng861CourseProjectApp.item.productPhoto">Product Photo</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="productNumOffers">
+              <div class="d-flex">
+                <span jhiTranslate="sweng861CourseProjectApp.item.productNumOffers">Product Num Offers</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="productMinimumOfferPrice">
+              <div class="d-flex">
+                <span jhiTranslate="sweng861CourseProjectApp.item.productMinimumOfferPrice">Product Minimum Offer Price</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="isBestSeller">
+              <div class="d-flex">
+                <span jhiTranslate="sweng861CourseProjectApp.item.isBestSeller">Is Best Seller</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="isAmazonChoice">
+              <div class="d-flex">
+                <span jhiTranslate="sweng861CourseProjectApp.item.isAmazonChoice">Is Amazon Choice</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="isPrime">
+              <div class="d-flex">
+                <span jhiTranslate="sweng861CourseProjectApp.item.isPrime">Is Prime</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="climatePledgeFriendly">
+              <div class="d-flex">
+                <span jhiTranslate="sweng861CourseProjectApp.item.climatePledgeFriendly">Climate Pledge Friendly</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="salesVolume">
+              <div class="d-flex">
+                <span jhiTranslate="sweng861CourseProjectApp.item.salesVolume">Sales Volume</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="delivery">
+              <div class="d-flex">
+                <span jhiTranslate="sweng861CourseProjectApp.item.delivery">Delivery</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="couponText">
+              <div class="d-flex">
+                <span jhiTranslate="sweng861CourseProjectApp.item.couponText">Coupon Text</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="order.id">
+              <div class="d-flex">
+                <span jhiTranslate="sweng861CourseProjectApp.item.order">Order</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody infinite-scroll (scrolled)="loadNextPage()" [infiniteScrollDisabled]="!hasMorePage()" [infiniteScrollDistance]="0">
+          @for (item of items; track trackId) {
+            <tr data-cy="entityTable">
+              <td>
+                <a [routerLink]="['/item', item.id, 'view']">{{ item.id }}</a>
+              </td>
+              <td>{{ item.asin }}</td>
+              <td>{{ item.productTitle }}</td>
+              <td>{{ item.productPrice }}</td>
+              <td>{{ item.productOriginalPrice }}</td>
+              <td>{{ item.currency }}</td>
+              <td>{{ item.productStarRating }}</td>
+              <td>{{ item.productNumRatings }}</td>
+              <td>{{ item.productUrl }}</td>
+              <td>{{ item.productPhoto }}</td>
+              <td>{{ item.productNumOffers }}</td>
+              <td>{{ item.productMinimumOfferPrice }}</td>
+              <td>{{ item.isBestSeller }}</td>
+              <td>{{ item.isAmazonChoice }}</td>
+              <td>{{ item.isPrime }}</td>
+              <td>{{ item.climatePledgeFriendly }}</td>
+              <td>{{ item.salesVolume }}</td>
+              <td>{{ item.delivery }}</td>
+              <td>{{ item.couponText }}</td>
+              <td>
+                @if (item.order) {
+                  <div>
+                    <a [routerLink]="['/order', item.order.id, 'view']">{{ item.order.id }}</a>
+                  </div>
+                }
+              </td>
+              <td class="text-end">
+                <div class="btn-group">
+                  <a [routerLink]="['/item', item.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                    <fa-icon icon="eye"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                  </a>
+
+                  <a [routerLink]="['/item', item.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                    <fa-icon icon="pencil-alt"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                  </a>
+
+                  <button type="submit" (click)="delete(item)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                    <fa-icon icon="times"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+</div>
