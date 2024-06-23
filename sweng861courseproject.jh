@@ -1,0 +1,65 @@
+
+entity EmployeeInformation {
+	name String required minlength(3)
+    handle String required minlength(2)
+}
+
+entity Order {
+	title String required
+    content TextBlob required
+    date Instant required
+}
+
+entity Item {
+	asin String required
+    productTitle String
+    productPrice String
+    productOriginalPrice String
+    currency String
+    productStarRating String
+    productNumRatings Integer
+    productUrl String
+    productPhoto String
+    productNumOffers Integer
+    productMinimumOfferPrice String
+    isBestSeller Boolean
+    isAmazonChoice Boolean
+    isPrime Boolean
+    climatePledgeFriendly Boolean
+    salesVolume String
+    delivery String
+    couponText String
+}
+
+entity OrderAnItem {
+	asin String required
+    productTitle String
+    productPrice String
+    productOriginalPrice String
+    currency String
+    productStarRating String
+    productNumRatings Integer
+    productUrl String
+    productPhoto String
+    productNumOffers Integer
+    productMinimumOfferPrice String
+    isBestSeller Boolean
+    isAmazonChoice Boolean
+    isPrime Boolean
+    climatePledgeFriendly Boolean
+    salesVolume String
+    delivery String
+    couponText String
+}
+
+relationship ManyToOne {
+    Order{EmployeeInformation(name)} to EmployeeInformation
+    Item to Order
+    OrderAnItem to Order
+}
+
+relationship OneToOne {
+	EmployeeInformation{user(login)} to User with builtInEntity
+}
+
+paginate EmployeeInformation, Order, Item with infinite-scroll
