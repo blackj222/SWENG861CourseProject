@@ -1,0 +1,93 @@
+{
+  "annotations": {
+    "changelogDate": "20240623214805"
+  },
+  "applications": "*",
+  "fields": [
+    {
+      "fieldName": "asin",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "productTitle",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "productPrice",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "productOriginalPrice",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "currency",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "productStarRating",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "productNumRatings",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "productUrl",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "productPhoto",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "productNumOffers",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "productMinimumOfferPrice",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "isBestSeller",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "isAmazonChoice",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "isPrime",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "climatePledgeFriendly",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "salesVolume",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "delivery",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "couponText",
+      "fieldType": "String"
+    }
+  ],
+  "name": "Item",
+  "pagination": "infinite-scroll",
+  "relationships": [
+    {
+      "otherEntityName": "order",
+      "otherEntityRelationshipName": "item",
+      "relationshipName": "order",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "no"
+}

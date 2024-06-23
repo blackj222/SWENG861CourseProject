@@ -1,0 +1,110 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (item()) {
+      <div>
+        <h2 data-cy="itemDetailsHeading"><span jhiTranslate="sweng861CourseProjectApp.item.detail.title">Item</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ item()!.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="sweng861CourseProjectApp.item.asin">Asin</span></dt>
+          <dd>
+            <span>{{ item()!.asin }}</span>
+          </dd>
+          <dt><span jhiTranslate="sweng861CourseProjectApp.item.productTitle">Product Title</span></dt>
+          <dd>
+            <span>{{ item()!.productTitle }}</span>
+          </dd>
+          <dt><span jhiTranslate="sweng861CourseProjectApp.item.productPrice">Product Price</span></dt>
+          <dd>
+            <span>{{ item()!.productPrice }}</span>
+          </dd>
+          <dt><span jhiTranslate="sweng861CourseProjectApp.item.productOriginalPrice">Product Original Price</span></dt>
+          <dd>
+            <span>{{ item()!.productOriginalPrice }}</span>
+          </dd>
+          <dt><span jhiTranslate="sweng861CourseProjectApp.item.currency">Currency</span></dt>
+          <dd>
+            <span>{{ item()!.currency }}</span>
+          </dd>
+          <dt><span jhiTranslate="sweng861CourseProjectApp.item.productStarRating">Product Star Rating</span></dt>
+          <dd>
+            <span>{{ item()!.productStarRating }}</span>
+          </dd>
+          <dt><span jhiTranslate="sweng861CourseProjectApp.item.productNumRatings">Product Num Ratings</span></dt>
+          <dd>
+            <span>{{ item()!.productNumRatings }}</span>
+          </dd>
+          <dt><span jhiTranslate="sweng861CourseProjectApp.item.productUrl">Product Url</span></dt>
+          <dd>
+            <span>{{ item()!.productUrl }}</span>
+          </dd>
+          <dt><span jhiTranslate="sweng861CourseProjectApp.item.productPhoto">Product Photo</span></dt>
+          <dd>
+            <span>{{ item()!.productPhoto }}</span>
+          </dd>
+          <dt><span jhiTranslate="sweng861CourseProjectApp.item.productNumOffers">Product Num Offers</span></dt>
+          <dd>
+            <span>{{ item()!.productNumOffers }}</span>
+          </dd>
+          <dt><span jhiTranslate="sweng861CourseProjectApp.item.productMinimumOfferPrice">Product Minimum Offer Price</span></dt>
+          <dd>
+            <span>{{ item()!.productMinimumOfferPrice }}</span>
+          </dd>
+          <dt><span jhiTranslate="sweng861CourseProjectApp.item.isBestSeller">Is Best Seller</span></dt>
+          <dd>
+            <span>{{ item()!.isBestSeller }}</span>
+          </dd>
+          <dt><span jhiTranslate="sweng861CourseProjectApp.item.isAmazonChoice">Is Amazon Choice</span></dt>
+          <dd>
+            <span>{{ item()!.isAmazonChoice }}</span>
+          </dd>
+          <dt><span jhiTranslate="sweng861CourseProjectApp.item.isPrime">Is Prime</span></dt>
+          <dd>
+            <span>{{ item()!.isPrime }}</span>
+          </dd>
+          <dt><span jhiTranslate="sweng861CourseProjectApp.item.climatePledgeFriendly">Climate Pledge Friendly</span></dt>
+          <dd>
+            <span>{{ item()!.climatePledgeFriendly }}</span>
+          </dd>
+          <dt><span jhiTranslate="sweng861CourseProjectApp.item.salesVolume">Sales Volume</span></dt>
+          <dd>
+            <span>{{ item()!.salesVolume }}</span>
+          </dd>
+          <dt><span jhiTranslate="sweng861CourseProjectApp.item.delivery">Delivery</span></dt>
+          <dd>
+            <span>{{ item()!.delivery }}</span>
+          </dd>
+          <dt><span jhiTranslate="sweng861CourseProjectApp.item.couponText">Coupon Text</span></dt>
+          <dd>
+            <span>{{ item()!.couponText }}</span>
+          </dd>
+          <dt><span jhiTranslate="sweng861CourseProjectApp.item.order">Order</span></dt>
+          <dd>
+            @if (item()!.order) {
+              <div>
+                <a [routerLink]="['/order', item()!.order?.id, 'view']">{{ item()!.order?.id }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/item', item()!.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

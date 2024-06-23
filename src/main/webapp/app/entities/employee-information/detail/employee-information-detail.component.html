@@ -1,0 +1,44 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (employeeInformation()) {
+      <div>
+        <h2 data-cy="employeeInformationDetailsHeading">
+          <span jhiTranslate="sweng861CourseProjectApp.employeeInformation.detail.title">Employee Information</span>
+        </h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ employeeInformation()!.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="sweng861CourseProjectApp.employeeInformation.name">Name</span></dt>
+          <dd>
+            <span>{{ employeeInformation()!.name }}</span>
+          </dd>
+          <dt><span jhiTranslate="sweng861CourseProjectApp.employeeInformation.handle">Handle</span></dt>
+          <dd>
+            <span>{{ employeeInformation()!.handle }}</span>
+          </dd>
+          <dt><span jhiTranslate="sweng861CourseProjectApp.employeeInformation.user">User</span></dt>
+          <dd>
+            <span>{{ employeeInformation()!.user?.login }}</span>
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/employee-information', employeeInformation()!.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

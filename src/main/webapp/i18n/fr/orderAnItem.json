@@ -1,0 +1,42 @@
+{
+  "sweng861CourseProjectApp": {
+    "orderAnItem": {
+      "home": {
+        "title": "OrderAnItems",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Order An Item",
+        "createOrEditLabel": "Créer ou éditer un Order An Item",
+        "notFound": "Aucun Order An Item trouvé"
+      },
+      "created": "Un nouveau Order An Item a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Order An Item avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Order An Item avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Order An Item {{ id }} ?"
+      },
+      "detail": {
+        "title": "Order An Item"
+      },
+      "id": "ID",
+      "asin": "Asin",
+      "productTitle": "Product Title",
+      "productPrice": "Product Price",
+      "productOriginalPrice": "Product Original Price",
+      "currency": "Currency",
+      "productStarRating": "Product Star Rating",
+      "productNumRatings": "Product Num Ratings",
+      "productUrl": "Product Url",
+      "productPhoto": "Product Photo",
+      "productNumOffers": "Product Num Offers",
+      "productMinimumOfferPrice": "Product Minimum Offer Price",
+      "isBestSeller": "Is Best Seller",
+      "isAmazonChoice": "Is Amazon Choice",
+      "isPrime": "Is Prime",
+      "climatePledgeFriendly": "Climate Pledge Friendly",
+      "salesVolume": "Sales Volume",
+      "delivery": "Delivery",
+      "couponText": "Coupon Text",
+      "order": "Order"
+    }
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "annotations": {
+    "changelogDate": "20240623214804"
+  },
+  "applications": "*",
+  "entityTableName": "jhi_order",
+  "fields": [
+    {
+      "fieldName": "title",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "content",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "text",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "date",
+      "fieldType": "Instant",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "name": "Order",
+  "pagination": "infinite-scroll",
+  "relationships": [
+    {
+      "otherEntityField": "name",
+      "otherEntityName": "employeeInformation",
+      "relationshipName": "employeeInformation",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "item",
+      "otherEntityRelationshipName": "order",
+      "relationshipName": "item",
+      "relationshipSide": "right",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "orderAnItem",
+      "otherEntityRelationshipName": "order",
+      "relationshipName": "orderAnItem",
+      "relationshipSide": "right",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "searchEngine": "no"
+}

@@ -1,0 +1,260 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-item-heading" data-cy="ItemCreateUpdateHeading" jhiTranslate="sweng861CourseProjectApp.item.home.createOrEditLabel">
+        Create or edit a Item
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" for="field_id" jhiTranslate="sweng861CourseProjectApp.item.id">ID</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        <div class="mb-3">
+          <label class="form-label" for="field_asin" jhiTranslate="sweng861CourseProjectApp.item.asin">Asin</label>
+          <input type="text" class="form-control" name="asin" id="field_asin" data-cy="asin" formControlName="asin" />
+          @if (editForm.get('asin')!.invalid && (editForm.get('asin')!.dirty || editForm.get('asin')!.touched)) {
+            <div>
+              @if (editForm.get('asin')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_productTitle" jhiTranslate="sweng861CourseProjectApp.item.productTitle">Product Title</label>
+          <input
+            type="text"
+            class="form-control"
+            name="productTitle"
+            id="field_productTitle"
+            data-cy="productTitle"
+            formControlName="productTitle"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_productPrice" jhiTranslate="sweng861CourseProjectApp.item.productPrice">Product Price</label>
+          <input
+            type="text"
+            class="form-control"
+            name="productPrice"
+            id="field_productPrice"
+            data-cy="productPrice"
+            formControlName="productPrice"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_productOriginalPrice" jhiTranslate="sweng861CourseProjectApp.item.productOriginalPrice"
+            >Product Original Price</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="productOriginalPrice"
+            id="field_productOriginalPrice"
+            data-cy="productOriginalPrice"
+            formControlName="productOriginalPrice"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_currency" jhiTranslate="sweng861CourseProjectApp.item.currency">Currency</label>
+          <input type="text" class="form-control" name="currency" id="field_currency" data-cy="currency" formControlName="currency" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_productStarRating" jhiTranslate="sweng861CourseProjectApp.item.productStarRating"
+            >Product Star Rating</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="productStarRating"
+            id="field_productStarRating"
+            data-cy="productStarRating"
+            formControlName="productStarRating"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_productNumRatings" jhiTranslate="sweng861CourseProjectApp.item.productNumRatings"
+            >Product Num Ratings</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="productNumRatings"
+            id="field_productNumRatings"
+            data-cy="productNumRatings"
+            formControlName="productNumRatings"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_productUrl" jhiTranslate="sweng861CourseProjectApp.item.productUrl">Product Url</label>
+          <input
+            type="text"
+            class="form-control"
+            name="productUrl"
+            id="field_productUrl"
+            data-cy="productUrl"
+            formControlName="productUrl"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_productPhoto" jhiTranslate="sweng861CourseProjectApp.item.productPhoto">Product Photo</label>
+          <input
+            type="text"
+            class="form-control"
+            name="productPhoto"
+            id="field_productPhoto"
+            data-cy="productPhoto"
+            formControlName="productPhoto"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_productNumOffers" jhiTranslate="sweng861CourseProjectApp.item.productNumOffers"
+            >Product Num Offers</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="productNumOffers"
+            id="field_productNumOffers"
+            data-cy="productNumOffers"
+            formControlName="productNumOffers"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            for="field_productMinimumOfferPrice"
+            jhiTranslate="sweng861CourseProjectApp.item.productMinimumOfferPrice"
+            >Product Minimum Offer Price</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="productMinimumOfferPrice"
+            id="field_productMinimumOfferPrice"
+            data-cy="productMinimumOfferPrice"
+            formControlName="productMinimumOfferPrice"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_isBestSeller" jhiTranslate="sweng861CourseProjectApp.item.isBestSeller"
+            >Is Best Seller</label
+          >
+          <input
+            type="checkbox"
+            class="form-check"
+            name="isBestSeller"
+            id="field_isBestSeller"
+            data-cy="isBestSeller"
+            formControlName="isBestSeller"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_isAmazonChoice" jhiTranslate="sweng861CourseProjectApp.item.isAmazonChoice"
+            >Is Amazon Choice</label
+          >
+          <input
+            type="checkbox"
+            class="form-check"
+            name="isAmazonChoice"
+            id="field_isAmazonChoice"
+            data-cy="isAmazonChoice"
+            formControlName="isAmazonChoice"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_isPrime" jhiTranslate="sweng861CourseProjectApp.item.isPrime">Is Prime</label>
+          <input type="checkbox" class="form-check" name="isPrime" id="field_isPrime" data-cy="isPrime" formControlName="isPrime" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_climatePledgeFriendly" jhiTranslate="sweng861CourseProjectApp.item.climatePledgeFriendly"
+            >Climate Pledge Friendly</label
+          >
+          <input
+            type="checkbox"
+            class="form-check"
+            name="climatePledgeFriendly"
+            id="field_climatePledgeFriendly"
+            data-cy="climatePledgeFriendly"
+            formControlName="climatePledgeFriendly"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_salesVolume" jhiTranslate="sweng861CourseProjectApp.item.salesVolume">Sales Volume</label>
+          <input
+            type="text"
+            class="form-control"
+            name="salesVolume"
+            id="field_salesVolume"
+            data-cy="salesVolume"
+            formControlName="salesVolume"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_delivery" jhiTranslate="sweng861CourseProjectApp.item.delivery">Delivery</label>
+          <input type="text" class="form-control" name="delivery" id="field_delivery" data-cy="delivery" formControlName="delivery" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_couponText" jhiTranslate="sweng861CourseProjectApp.item.couponText">Coupon Text</label>
+          <input
+            type="text"
+            class="form-control"
+            name="couponText"
+            id="field_couponText"
+            data-cy="couponText"
+            formControlName="couponText"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_order" jhiTranslate="sweng861CourseProjectApp.item.order">Order</label>
+          <select class="form-control" id="field_order" data-cy="order" name="order" formControlName="order" [compareWith]="compareOrder">
+            <option [ngValue]="null"></option>
+            @for (orderOption of ordersSharedCollection; track $index) {
+              <option [ngValue]="orderOption">{{ orderOption.id }}</option>
+            }
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
