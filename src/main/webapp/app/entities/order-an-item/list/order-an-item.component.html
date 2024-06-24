@@ -2,7 +2,7 @@
   <h2 id="page-heading" data-cy="OrderAnItemHeading">
     <span jhiTranslate="sweng861CourseProjectApp.orderAnItem.home.title">Order An Items</span>
     <div class="d-flex justify-content-end">
-      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+      <button class="btn btn-info me-2" (click)="newLoad()" [disabled]="isLoading">
         <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
         <span jhiTranslate="sweng861CourseProjectApp.orderAnItem.home.refreshListLabel">Refresh list</span>
       </button>
@@ -20,15 +20,8 @@
   </h2>
 
   <div class="divContainerOrderAnItem">
-    <label class="form-label" for="amazonSearchBox">Search Amazon</label>
-    <input
-      type="text"
-      class="amazonSearchBox"
-      name="amazonSearchBox"
-      id="amazonSearchBox"
-      data-cy="amazonSearchBox"
-      formControlName="amazonSearchBox"
-    />
+    <label for="amazonSearchBox">Search Amazon</label>
+    <input type="text" class="amazonSearchBox" name="amazonSearchBox" id="amazonSearchBox" data-cy="amazonSearchBox" />
   </div>
 
   <jhi-alert-error></jhi-alert-error>
@@ -37,7 +30,7 @@
 
   @if (orderAnItems?.length === 0) {
     <div class="alert alert-warning" id="no-result">
-      <span jhiTranslate="sweng861CourseProjectApp.orderAnItem.home.notFound">No Order An Items found</span>
+      <span>Please start a new query</span>
     </div>
   }
 

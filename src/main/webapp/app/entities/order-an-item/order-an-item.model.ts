@@ -24,3 +24,34 @@ export interface IOrderAnItem {
 }
 
 export type NewOrderAnItem = Omit<IOrderAnItem, 'id'> & { id: null };
+
+export function createIOrderAnItem(
+  vId: number,
+  parameter: Omit<IOrderAnItem, 'id'>,
+): {
+  id: number;
+  productNumOffers?: number | null;
+  climatePledgeFriendly?: boolean | null;
+  productOriginalPrice?: string | null;
+  delivery?: string | null;
+  productPhoto?: string | null;
+  salesVolume?: string | null;
+  couponText?: string | null;
+  isBestSeller?: boolean | null;
+  productTitle?: string | null;
+  productMinimumOfferPrice?: string | null;
+  productStarRating?: string | null;
+  asin?: string | null;
+  currency?: string | null;
+  productUrl?: string | null;
+  productNumRatings?: number | null;
+  isPrime?: boolean | null;
+  productPrice?: string | null;
+  isAmazonChoice?: boolean | null;
+  order?: IOrder | null;
+} {
+  return {
+    id: vId,
+    ...parameter,
+  };
+}
