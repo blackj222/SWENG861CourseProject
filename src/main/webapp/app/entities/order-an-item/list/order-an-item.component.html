@@ -1,7 +1,6 @@
 <div>
   <h2 id="page-heading" data-cy="OrderAnItemHeading">
     <span jhiTranslate="sweng861CourseProjectApp.orderAnItem.home.title">Order An Items</span>
-
     <div class="d-flex justify-content-end">
       <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
         <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
@@ -19,6 +18,18 @@
       </button>
     </div>
   </h2>
+
+  <div class="divContainerOrderAnItem">
+    <label class="form-label" for="amazonSearchBox">Search Amazon</label>
+    <input
+      type="text"
+      class="amazonSearchBox"
+      name="amazonSearchBox"
+      id="amazonSearchBox"
+      data-cy="amazonSearchBox"
+      formControlName="amazonSearchBox"
+    />
+  </div>
 
   <jhi-alert-error></jhi-alert-error>
 

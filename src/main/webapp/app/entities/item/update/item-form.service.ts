@@ -84,6 +84,12 @@ export class ItemFormService {
     return form.getRawValue() as IItem | NewItem;
   }
 
+  getNewItem(form: ItemFormGroup): NewItem {
+    let curItem = form.getRawValue();
+    curItem.id = null;
+    return curItem as NewItem;
+  }
+
   resetForm(form: ItemFormGroup, item: ItemFormGroupInput): void {
     const itemRawValue = { ...this.getFormDefaults(), ...item };
     form.reset(

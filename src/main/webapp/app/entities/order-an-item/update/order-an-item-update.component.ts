@@ -9,6 +9,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { IOrder } from 'app/entities/order/order.model';
 import { OrderService } from 'app/entities/order/service/order.service';
+import { IOrderAnItem } from '../order-an-item.model';
+import { OrderAnItemService } from '../service/order-an-item.service';
+import { OrderAnItemFormService, OrderAnItemFormGroup } from './order-an-item-form.service';
+
 import { IItem } from '../../item/item.model';
 import { ItemService } from '../../item/service/item.service';
 import { ItemFormService, ItemFormGroup } from '../../item/update/item-form.service';
@@ -21,25 +25,30 @@ import { ItemFormService, ItemFormGroup } from '../../item/update/item-form.serv
 })
 export class OrderAnItemUpdateComponent implements OnInit {
   isSaving = false;
-  Item: IItem | null = null;
+  orderAnItem: IOrderAnItem | null = null;
 
   ordersSharedCollection: IOrder[] = [];
 
-  protected ItemService = inject(ItemService);
-  protected ItemFormService = inject(ItemFormService);
+  protected orderAnItemService = inject(OrderAnItemService);
+  protected orderAnItemFormService = inject(OrderAnItemFormService);
   protected orderService = inject(OrderService);
   protected activatedRoute = inject(ActivatedRoute);
 
+  Item: IItem | null = null;
+
+  protected ItemService = inject(ItemService);
+  protected ItemFormService = inject(ItemFormService);
+
   // eslint-disable-next-line @typescript-eslint/member-ordering
-  editForm: ItemFormGroup = this.ItemFormService.createItemFormGroup();
+  editForm: OrderAnItemFormGroup = this.orderAnItemFormService.createOrderAnItemFormGroup();
 
   compareOrder = (o1: IOrder | null, o2: IOrder | null): boolean => this.orderService.compareOrder(o1, o2);
 
   ngOnInit(): void {
-    this.activatedRoute.data.subscribe(({ Item }) => {
-      this.Item = Item;
-      if (Item) {
-        this.updateForm(Item);
+    this.activatedRoute.data.subscribe(({ orderAnItem }) => {
+      this.orderAnItem = orderAnItem;
+      if (orderAnItem) {
+        this.updateForm(orderAnItem);
       }
 
       this.loadRelationshipsOptions();
@@ -52,12 +61,8 @@ export class OrderAnItemUpdateComponent implements OnInit {
 
   save(): void {
     this.isSaving = true;
-    const Item = this.ItemFormService.getItem(this.editForm);
-    if (Item.id !== null) {
-      this.subscribeToSaveResponse(this.ItemService.update(Item));
-    } else {
-      this.subscribeToSaveResponse(this.ItemService.create(Item));
-    }
+    const Item = this.ItemFormService.getNewItem(this.editForm);
+    this.subscribeToSaveResponse(this.ItemService.create(Item));
   }
 
   protected subscribeToSaveResponse(result: Observable<HttpResponse<IItem>>): void {
@@ -79,18 +84,18 @@ export class OrderAnItemUpdateComponent implements OnInit {
     this.isSaving = false;
   }
 
-  protected updateForm(Item: IItem): void {
-    this.Item = Item;
-    this.ItemFormService.resetForm(this.editForm, Item);
+  protected updateForm(orderAnItem: IOrderAnItem): void {
+    this.orderAnItem = orderAnItem;
+    this.orderAnItemFormService.resetForm(this.editForm, orderAnItem);
 
-    this.ordersSharedCollection = this.orderService.addOrderToCollectionIfMissing<IOrder>(this.ordersSharedCollection, Item.order);
+    this.ordersSharedCollection = this.orderService.addOrderToCollectionIfMissing<IOrder>(this.ordersSharedCollection, orderAnItem.order);
   }
 
   protected loadRelationshipsOptions(): void {
     this.orderService
       .query()
       .pipe(map((res: HttpResponse<IOrder[]>) => res.body ?? []))
-      .pipe(map((orders: IOrder[]) => this.orderService.addOrderToCollectionIfMissing<IOrder>(orders, this.Item?.order)))
+      .pipe(map((orders: IOrder[]) => this.orderService.addOrderToCollectionIfMissing<IOrder>(orders, this.orderAnItem?.order)))
       .subscribe((orders: IOrder[]) => (this.ordersSharedCollection = orders));
   }
 }

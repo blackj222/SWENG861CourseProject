@@ -6,7 +6,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import SharedModule from 'app/shared/shared.module';
 import { sortStateSignal, SortDirective, SortByDirective, type SortState, SortService } from 'app/shared/sort';
 import { DurationPipe, FormatMediumDatetimePipe, FormatMediumDatePipe } from 'app/shared/date';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SORT, ITEM_DELETED_EVENT, DEFAULT_SORT_DATA } from 'app/config/navigation.constants';
 import { IOrderAnItem } from '../order-an-item.model';
 import { EntityArrayResponseType, OrderAnItemService } from '../service/order-an-item.service';
@@ -25,6 +25,7 @@ import { OrderAnItemDeleteDialogComponent } from '../delete/order-an-item-delete
     DurationPipe,
     FormatMediumDatetimePipe,
     FormatMediumDatePipe,
+    ReactiveFormsModule,
   ],
 })
 export class OrderAnItemComponent implements OnInit {

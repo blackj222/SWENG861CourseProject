@@ -236,4 +236,23 @@ angular-cli removes postcss-rtl processed inline css, processed rules must be ad
     }
   }
 }
+
+/* ==========================================================================
+added style for orderAnItem
+========================================================================== */
+.amazonSearchBox {
+  max-width: 200px;
+  max-height: 30px;
+  margin-left: 8px;
+}
+
+.divContainerOrderAnItem {
+  max-height: 30px;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: right;
+}
+
 /* jhipster-needle-scss-add-main JHipster will add new css style */
